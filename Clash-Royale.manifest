@@ -1,5 +1,6 @@
 {
   "name": "Clash Royale",
+  "revision": "0.1",
   "game": "Clash Royale",
   "genre": "fantasy",
   "publisher": "Supercell",
@@ -3996,6 +3997,5 @@
     "gameModes": {},
     "theme": {}
   },
-  "revision": "0.1",
-  "info": ""
+  "wip": true
 }
