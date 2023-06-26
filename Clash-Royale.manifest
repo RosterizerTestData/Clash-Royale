@@ -1,11 +1,12 @@
 {
   "name": "Clash Royale",
-  "revision": "0.1",
+  "revision": "0.1.1",
   "game": "Clash Royale",
   "genre": "fantasy",
   "publisher": "Supercell",
   "url": "https://clashroyale.com/",
   "notes": "This manifest is provided for the purposes of testing Rosterizer and is not intended for distribution.",
+  "wip": true,
   "manifest": {
     "assetTaxonomy": {
       "Building": {
@@ -18,6 +19,16 @@
           "The selected arena is too low for this building.": {
             "evals": [
               {
+                "max": [
+                  "{roster}",
+                  "stats",
+                  "Arena",
+                  "numbers",
+                  "value",
+                  "current"
+                ],
+                "not": false,
+                "operator": "AND",
                 "paths": [
                   [
                     "{self}",
@@ -25,125 +36,141 @@
                     "Arena",
                     "value"
                   ]
-                ],
-                "max": [
-                  "{roster}",
-                  "stats",
-                  "Arena",
-                  "numbers",
-                  "value",
-                  "current"
-                ],
-                "operator": "AND",
-                "not": false
+                ]
               }
             ],
-            "failState": "warning",
-            "evaluate": "OR"
-          }
-        },
-        "templateClass": "Card"
-      },
-      "Spell": {
-        "aspects": {
-          "Lock Qty": true,
-          "Type": "game piece",
-          "Unique": true
-        },
-        "rules": {
-          "The selected arena is too low for this spell.": {
-            "evals": [
-              {
-                "paths": [
-                  [
-                    "{self}",
-                    "stats",
-                    "Arena",
-                    "value"
-                  ]
-                ],
-                "max": [
-                  "{roster}",
-                  "stats",
-                  "Arena",
-                  "numbers",
-                  "value",
-                  "current"
-                ],
-                "operator": "AND",
-                "not": false
-              }
-            ],
-            "failState": "warning",
-            "evaluate": "OR"
-          }
-        },
-        "templateClass": "Card"
-      },
-      "Troop": {
-        "aspects": {
-          "Lock Qty": true,
-          "Type": "game piece",
-          "Unique": true
-        },
-        "rules": {
-          "The selected arena is too low for this troop.": {
-            "evals": [
-              {
-                "paths": [
-                  [
-                    "{self}",
-                    "stats",
-                    "Arena",
-                    "processed",
-                    "numeric",
-                    "current"
-                  ]
-                ],
-                "max": [
-                  "{roster}",
-                  "stats",
-                  "Arena",
-                  "numbers",
-                  "value",
-                  "current"
-                ],
-                "operator": "AND",
-                "not": false
-              }
-            ],
-            "failState": "warning",
-            "evaluate": "OR"
+            "evaluate": "OR",
+            "failState": "warning"
           }
         },
         "templateClass": "Card"
       },
       "Card": {
         "stats": {
+          "Arena": {
+            "dynamic": true,
+            "ranks": {
+              "0": {
+                "format": "Training Camp",
+                "number": 0,
+                "order": 0
+              },
+              "1": {
+                "format": "Goblin Stadium",
+                "number": 1,
+                "order": 1
+              },
+              "2": {
+                "format": "Bone Pit",
+                "number": 2,
+                "order": 2
+              },
+              "3": {
+                "format": "Barbarian Bowl",
+                "number": 3,
+                "order": 3
+              },
+              "4": {
+                "format": "P.E.K.K.A’s Playhouse",
+                "number": 4,
+                "order": 4
+              },
+              "5": {
+                "format": "Spell Valley",
+                "number": 5,
+                "order": 5
+              },
+              "6": {
+                "format": "Builder’s Workshop",
+                "number": 6,
+                "order": 6
+              },
+              "7": {
+                "format": "Royal Arena",
+                "number": 7,
+                "order": 7
+              },
+              "8": {
+                "format": "Frozen Peak",
+                "number": 8,
+                "order": 8
+              },
+              "9": {
+                "format": "Jungle Arena",
+                "number": 9,
+                "order": 9
+              },
+              "10": {
+                "format": "Hog Mountain",
+                "number": 10,
+                "order": 10
+              },
+              "11": {
+                "format": "Electro Valley",
+                "number": 11,
+                "order": 11
+              },
+              "12": {
+                "format": "Spooky Town",
+                "number": 12,
+                "order": 12
+              },
+              "13": {
+                "format": "Rascal's Hideout",
+                "number": 13,
+                "order": 13
+              },
+              "14": {
+                "format": "Serenity Peak",
+                "number": 14,
+                "order": 14
+              },
+              "15": {
+                "format": "Legendary Arena",
+                "number": 15,
+                "order": 15
+              }
+            },
+            "statType": "rank"
+          },
           "Card": {
-            "value": 1,
-            "tracked": true,
             "statType": "numeric",
+            "tracked": true,
+            "value": 1,
             "visibility": "hidden"
           },
           "Cost": {
-            "value": 0,
             "group": "cost",
             "groupOrder": -1,
+            "statType": "numeric",
             "tracked": true,
-            "statType": "numeric"
+            "value": 0
+          },
+          "Dmg. Type": {
+            "ranks": {
+              "0": {
+                "format": "Normal",
+                "order": 0
+              },
+              "1": {
+                "format": "Splash",
+                "order": 1
+              }
+            },
+            "statType": "rank",
+            "tracked": true
           },
           "Radius": {
-            "value": null,
-            "statType": "numeric"
+            "statType": "numeric",
+            "value": null
           },
           "Range": {
-            "value": null,
-            "statType": "numeric"
+            "statType": "numeric",
+            "value": null
           },
           "Stun": {
-            "value": null,
-            "statType": "numeric"
+            "statType": "numeric",
+            "value": null
           },
           "Suicide": {
             "ranks": {
@@ -155,7 +182,6 @@
             "statType": "rank"
           },
           "Target": {
-            "tracked": true,
             "ranks": {
               "0": {
                 "format": "Ground",
@@ -170,10 +196,10 @@
                 "order": 2
               }
             },
-            "statType": "rank"
+            "statType": "rank",
+            "tracked": true
           },
           "Transport": {
-            "tracked": true,
             "ranks": {
               "0": {
                 "format": "Ground",
@@ -184,113 +210,88 @@
                 "order": 1
               }
             },
-            "statType": "rank"
-          },
-          "Width": {
-            "value": null,
-            "statType": "numeric"
-          },
-          "Dmg. Type": {
             "statType": "rank",
-            "ranks": {
-              "0": {
-                "order": 0,
-                "format": "Normal"
-              },
-              "1": {
-                "order": 1,
-                "format": "Splash"
-              }
-            },
             "tracked": true
           },
-          "Arena": {
-            "statType": "rank",
-            "ranks": {
-              "0": {
-                "order": 0,
-                "format": "Training Camp",
-                "number": 0
-              },
-              "1": {
-                "order": 1,
-                "format": "Goblin Stadium",
-                "number": 1
-              },
-              "2": {
-                "order": 2,
-                "format": "Bone Pit",
-                "number": 2
-              },
-              "3": {
-                "order": 3,
-                "format": "Barbarian Bowl",
-                "number": 3
-              },
-              "4": {
-                "order": 4,
-                "format": "P.E.K.K.A’s Playhouse",
-                "number": 4
-              },
-              "5": {
-                "order": 5,
-                "format": "Spell Valley",
-                "number": 5
-              },
-              "6": {
-                "order": 6,
-                "format": "Builder’s Workshop",
-                "number": 6
-              },
-              "7": {
-                "order": 7,
-                "format": "Royal Arena",
-                "number": 7
-              },
-              "8": {
-                "order": 8,
-                "format": "Frozen Peak",
-                "number": 8
-              },
-              "9": {
-                "order": 9,
-                "format": "Jungle Arena",
-                "number": 9
-              },
-              "10": {
-                "order": 10,
-                "format": "Hog Mountain",
-                "number": 10
-              },
-              "11": {
-                "order": 11,
-                "format": "Electro Valley",
-                "number": 11
-              },
-              "12": {
-                "order": 12,
-                "format": "Spooky Town",
-                "number": 12
-              },
-              "13": {
-                "order": 13,
-                "format": "Rascal's Hideout",
-                "number": 13
-              },
-              "14": {
-                "order": 14,
-                "format": "Serenity Peak",
-                "number": 14
-              },
-              "15": {
-                "order": 15,
-                "format": "Legendary Arena",
-                "number": 15
-              }
-            },
-            "dynamic": true
+          "Width": {
+            "statType": "numeric",
+            "value": null
           }
         }
+      },
+      "Spell": {
+        "aspects": {
+          "Lock Qty": true,
+          "Type": "game piece",
+          "Unique": true
+        },
+        "rules": {
+          "The selected arena is too low for this spell.": {
+            "evals": [
+              {
+                "max": [
+                  "{roster}",
+                  "stats",
+                  "Arena",
+                  "numbers",
+                  "value",
+                  "current"
+                ],
+                "not": false,
+                "operator": "AND",
+                "paths": [
+                  [
+                    "{self}",
+                    "stats",
+                    "Arena",
+                    "value"
+                  ]
+                ]
+              }
+            ],
+            "evaluate": "OR",
+            "failState": "warning"
+          }
+        },
+        "templateClass": "Card"
+      },
+      "Troop": {
+        "aspects": {
+          "Lock Qty": true,
+          "Type": "game piece",
+          "Unique": true
+        },
+        "rules": {
+          "The selected arena is too low for this troop.": {
+            "evals": [
+              {
+                "max": [
+                  "{roster}",
+                  "stats",
+                  "Arena",
+                  "numbers",
+                  "value",
+                  "current"
+                ],
+                "not": false,
+                "operator": "AND",
+                "paths": [
+                  [
+                    "{self}",
+                    "stats",
+                    "Arena",
+                    "processed",
+                    "numeric",
+                    "current"
+                  ]
+                ]
+              }
+            ],
+            "evaluate": "OR",
+            "failState": "warning"
+          }
+        },
+        "templateClass": "Card"
       }
     },
     "assetCatalog": {
@@ -300,9 +301,6 @@
             "Spawn§Barbarians"
           ]
         },
-        "meta": {
-          "id": 27000005
-        },
         "keywords": {
           "Rarity": [
             "Rare"
@@ -311,13 +309,16 @@
             "Spawn"
           ]
         },
+        "meta": {
+          "id": 27000005
+        },
         "stats": {
           "Arena": {
             "statType": "rank"
           },
           "Cost": {
-            "value": 7,
-            "statType": "numeric"
+            "statType": "numeric",
+            "value": 7
           },
           "Dmg. Type": {
             "statType": "rank"
@@ -328,9 +329,6 @@
         }
       },
       "Building§Bomb Tower": {
-        "meta": {
-          "id": 27000004
-        },
         "keywords": {
           "Rarity": [
             "Rare"
@@ -339,13 +337,16 @@
             "Defense"
           ]
         },
+        "meta": {
+          "id": 27000004
+        },
         "stats": {
           "Arena": {
             "statType": "rank"
           },
           "Cost": {
-            "value": 4,
-            "statType": "numeric"
+            "statType": "numeric",
+            "value": 4
           },
           "Dmg. Type": {
             "statType": "rank"
@@ -356,9 +357,6 @@
         }
       },
       "Building§Cannon": {
-        "meta": {
-          "id": 27000000
-        },
         "keywords": {
           "Rarity": [
             "Common"
@@ -367,13 +365,16 @@
             "Defense"
           ]
         },
+        "meta": {
+          "id": 27000000
+        },
         "stats": {
           "Arena": {
             "statType": "rank"
           },
           "Cost": {
-            "value": 3,
-            "statType": "numeric"
+            "statType": "numeric",
+            "value": 3
           },
           "Dmg. Type": {
             "statType": "rank"
@@ -384,9 +385,6 @@
         }
       },
       "Building§Elixir Collector": {
-        "meta": {
-          "id": 27000007
-        },
         "keywords": {
           "Rarity": [
             "Rare"
@@ -395,13 +393,16 @@
             "Versatile"
           ]
         },
+        "meta": {
+          "id": 27000007
+        },
         "stats": {
           "Arena": {
             "statType": "rank"
           },
           "Cost": {
-            "value": 6,
-            "statType": "numeric"
+            "statType": "numeric",
+            "value": 6
           }
         }
       },
@@ -411,9 +412,6 @@
             "Spawn§Fire Spirit"
           ]
         },
-        "meta": {
-          "id": 27000010
-        },
         "keywords": {
           "Rarity": [
             "Rare"
@@ -422,13 +420,16 @@
             "Spawn"
           ]
         },
+        "meta": {
+          "id": 27000010
+        },
         "stats": {
           "Arena": {
             "statType": "rank"
           },
           "Cost": {
-            "value": 4,
-            "statType": "numeric"
+            "statType": "numeric",
+            "value": 4
           },
           "Dmg. Type": {
             "statType": "rank"
@@ -444,9 +445,6 @@
             "Spawn§Goblin Brawler"
           ]
         },
-        "meta": {
-          "id": 27000012
-        },
         "keywords": {
           "Rarity": [
             "Rare"
@@ -455,13 +453,16 @@
             "Versatile"
           ]
         },
+        "meta": {
+          "id": 27000012
+        },
         "stats": {
           "Arena": {
             "statType": "rank"
           },
           "Cost": {
-            "value": 4,
-            "statType": "numeric"
+            "statType": "numeric",
+            "value": 4
           },
           "Dmg. Type": {
             "statType": "rank"
@@ -477,9 +478,6 @@
             "Spawn§Goblins"
           ]
         },
-        "meta": {
-          "id": 27000013
-        },
         "keywords": {
           "Rarity": [
             "Epic"
@@ -488,13 +486,16 @@
             "Spawn"
           ]
         },
+        "meta": {
+          "id": 27000013
+        },
         "stats": {
           "Arena": {
             "statType": "rank"
           },
           "Cost": {
-            "value": 4,
-            "statType": "numeric"
+            "statType": "numeric",
+            "value": 4
           },
           "Dmg. Type": {
             "statType": "rank"
@@ -510,9 +511,6 @@
             "Spawn§Spear Goblins"
           ]
         },
-        "meta": {
-          "id": 27000001
-        },
         "keywords": {
           "Rarity": [
             "Rare"
@@ -521,13 +519,16 @@
             "Spawn"
           ]
         },
+        "meta": {
+          "id": 27000001
+        },
         "stats": {
           "Arena": {
             "statType": "rank"
           },
           "Cost": {
-            "value": 5,
-            "statType": "numeric"
+            "statType": "numeric",
+            "value": 5
           },
           "Dmg. Type": {
             "statType": "rank"
@@ -538,9 +539,6 @@
         }
       },
       "Building§Inferno Tower": {
-        "meta": {
-          "id": 27000003
-        },
         "keywords": {
           "Rarity": [
             "Rare"
@@ -549,13 +547,16 @@
             "Defense"
           ]
         },
+        "meta": {
+          "id": 27000003
+        },
         "stats": {
           "Arena": {
             "statType": "rank"
           },
           "Cost": {
-            "value": 5,
-            "statType": "numeric"
+            "statType": "numeric",
+            "value": 5
           },
           "Dmg. Type": {
             "statType": "rank"
@@ -566,9 +567,6 @@
         }
       },
       "Building§Mortar": {
-        "meta": {
-          "id": 27000002
-        },
         "keywords": {
           "Rarity": [
             "Common"
@@ -577,13 +575,16 @@
             "Versatile"
           ]
         },
+        "meta": {
+          "id": 27000002
+        },
         "stats": {
           "Arena": {
             "statType": "rank"
           },
           "Cost": {
-            "value": 4,
-            "statType": "numeric"
+            "statType": "numeric",
+            "value": 4
           },
           "Dmg. Type": {
             "statType": "rank"
@@ -594,9 +595,6 @@
         }
       },
       "Building§Tesla": {
-        "meta": {
-          "id": 27000006
-        },
         "keywords": {
           "Rarity": [
             "Common"
@@ -605,13 +603,16 @@
             "Defense"
           ]
         },
+        "meta": {
+          "id": 27000006
+        },
         "stats": {
           "Arena": {
             "statType": "rank"
           },
           "Cost": {
-            "value": 4,
-            "statType": "numeric"
+            "statType": "numeric",
+            "value": 4
           },
           "Dmg. Type": {
             "statType": "rank"
@@ -627,9 +628,6 @@
             "Spawn§Skeletons"
           ]
         },
-        "meta": {
-          "id": 27000009
-        },
         "keywords": {
           "Rarity": [
             "Rare"
@@ -638,13 +636,16 @@
             "Spawn"
           ]
         },
+        "meta": {
+          "id": 27000009
+        },
         "stats": {
           "Arena": {
             "statType": "rank"
           },
           "Cost": {
-            "value": 3,
-            "statType": "numeric"
+            "statType": "numeric",
+            "value": 3
           },
           "Dmg. Type": {
             "statType": "rank"
@@ -655,9 +656,6 @@
         }
       },
       "Building§X-Bow": {
-        "meta": {
-          "id": 27000008
-        },
         "keywords": {
           "Rarity": [
             "Epic"
@@ -666,13 +664,16 @@
             "Offense"
           ]
         },
+        "meta": {
+          "id": 27000008
+        },
         "stats": {
           "Arena": {
             "statType": "rank"
           },
           "Cost": {
-            "value": 6,
-            "statType": "numeric"
+            "statType": "numeric",
+            "value": 6
           },
           "Dmg. Type": {
             "statType": "rank"
@@ -700,133 +701,130 @@
           "Unique": true
         },
         "stats": {
+          "Arena": {
+            "dynamic": true,
+            "ranks": {
+              "0": {
+                "format": "Training Camp",
+                "number": 0,
+                "order": 0
+              },
+              "1": {
+                "format": "Goblin Stadium",
+                "number": 1,
+                "order": 1
+              },
+              "2": {
+                "format": "Bone Pit",
+                "number": 2,
+                "order": 2
+              },
+              "3": {
+                "format": "Barbarian Bowl",
+                "number": 3,
+                "order": 3
+              },
+              "4": {
+                "format": "P.E.K.K.A’s Playhouse",
+                "number": 4,
+                "order": 4
+              },
+              "5": {
+                "format": "Spell Valley",
+                "number": 5,
+                "order": 5
+              },
+              "6": {
+                "format": "Builder’s Workshop",
+                "number": 6,
+                "order": 6
+              },
+              "7": {
+                "format": "Royal Arena",
+                "number": 7,
+                "order": 7
+              },
+              "8": {
+                "format": "Frozen Peak",
+                "number": 8,
+                "order": 8
+              },
+              "9": {
+                "format": "Jungle Arena",
+                "number": 9,
+                "order": 9
+              },
+              "10": {
+                "format": "Hog Mountain",
+                "number": 10,
+                "order": 10
+              },
+              "11": {
+                "format": "Electro Valley",
+                "number": 11,
+                "order": 11
+              },
+              "12": {
+                "format": "Spooky Town",
+                "number": 12,
+                "order": 12
+              },
+              "13": {
+                "format": "Rascal's Hideout",
+                "number": 13,
+                "order": 13
+              },
+              "14": {
+                "format": "Serenity Peak",
+                "number": 14,
+                "order": 14
+              },
+              "15": {
+                "format": "Legendary Arena",
+                "number": 15,
+                "order": 15
+              }
+            },
+            "statType": "rank"
+          },
           "Card": {
             "format": "Cards",
-            "value": 0,
-            "statOrder": 2,
             "group": "cost",
             "groupOrder": -1,
-            "tracked": true,
             "max": 8,
-            "statType": "numeric"
+            "statOrder": 2,
+            "statType": "numeric",
+            "tracked": true,
+            "value": 0
           },
           "Cost": {
-            "value": 0,
             "group": "cost",
             "groupOrder": -1,
+            "statType": "numeric",
             "tracked": true,
-            "statType": "numeric"
+            "value": 0
           },
           "Dmg. Type": {
             "format": "AOE",
-            "value": 0,
+            "statType": "numeric",
             "tracked": true,
-            "statType": "numeric"
+            "value": 0
           },
           "Target": {
             "format": "Target Air",
-            "value": 0,
+            "statType": "numeric",
             "tracked": true,
-            "statType": "numeric"
+            "value": 0
           },
           "Transport": {
             "format": "Flying",
-            "value": 0,
+            "statType": "numeric",
             "tracked": true,
-            "statType": "numeric"
-          },
-          "Arena": {
-            "statType": "rank",
-            "ranks": {
-              "0": {
-                "order": 0,
-                "format": "Training Camp",
-                "number": 0
-              },
-              "1": {
-                "order": 1,
-                "format": "Goblin Stadium",
-                "number": 1
-              },
-              "2": {
-                "order": 2,
-                "format": "Bone Pit",
-                "number": 2
-              },
-              "3": {
-                "order": 3,
-                "format": "Barbarian Bowl",
-                "number": 3
-              },
-              "4": {
-                "order": 4,
-                "format": "P.E.K.K.A’s Playhouse",
-                "number": 4
-              },
-              "5": {
-                "order": 5,
-                "format": "Spell Valley",
-                "number": 5
-              },
-              "6": {
-                "order": 6,
-                "format": "Builder’s Workshop",
-                "number": 6
-              },
-              "7": {
-                "order": 7,
-                "format": "Royal Arena",
-                "number": 7
-              },
-              "8": {
-                "order": 8,
-                "format": "Frozen Peak",
-                "number": 8
-              },
-              "9": {
-                "order": 9,
-                "format": "Jungle Arena",
-                "number": 9
-              },
-              "10": {
-                "order": 10,
-                "format": "Hog Mountain",
-                "number": 10
-              },
-              "11": {
-                "order": 11,
-                "format": "Electro Valley",
-                "number": 11
-              },
-              "12": {
-                "order": 12,
-                "format": "Spooky Town",
-                "number": 12
-              },
-              "13": {
-                "order": 13,
-                "format": "Rascal's Hideout",
-                "number": 13
-              },
-              "14": {
-                "order": 14,
-                "format": "Serenity Peak",
-                "number": 14
-              },
-              "15": {
-                "order": 15,
-                "format": "Legendary Arena",
-                "number": 15
-              }
-            },
-            "dynamic": true
+            "value": 0
           }
         }
       },
       "Spell§Arrows": {
-        "meta": {
-          "id": 28000001
-        },
         "keywords": {
           "Rarity": [
             "Common"
@@ -835,20 +833,23 @@
             "Damage"
           ]
         },
+        "meta": {
+          "id": 28000001
+        },
         "stats": {
           "Arena": {
             "statType": "rank"
           },
           "Cost": {
-            "value": 3,
-            "statType": "numeric"
+            "statType": "numeric",
+            "value": 3
           },
           "Dmg. Type": {
             "statType": "rank"
           },
           "Radius": {
-            "value": 4,
-            "statType": "numeric"
+            "statType": "numeric",
+            "value": 4
           },
           "Target": {
             "statType": "rank"
@@ -856,9 +857,6 @@
         }
       },
       "Spell§Barbarian Barrel": {
-        "meta": {
-          "id": 28000015
-        },
         "keywords": {
           "Rarity": [
             "Epic"
@@ -867,34 +865,34 @@
             "Damage"
           ]
         },
+        "meta": {
+          "id": 28000015
+        },
         "stats": {
           "Arena": {
             "statType": "rank"
           },
           "Cost": {
-            "value": 2,
-            "statType": "numeric"
+            "statType": "numeric",
+            "value": 2
           },
           "Dmg. Type": {
             "statType": "rank"
           },
           "Range": {
-            "value": 5,
-            "statType": "numeric"
+            "statType": "numeric",
+            "value": 5
           },
           "Target": {
             "statType": "rank"
           },
           "Width": {
-            "value": 3.9,
-            "statType": "numeric"
+            "statType": "numeric",
+            "value": 3.9
           }
         }
       },
       "Spell§Clone": {
-        "meta": {
-          "id": 28000013
-        },
         "keywords": {
           "Rarity": [
             "Epic"
@@ -903,24 +901,24 @@
             "Utility"
           ]
         },
+        "meta": {
+          "id": 28000013
+        },
         "stats": {
           "Arena": {
             "statType": "rank"
           },
           "Cost": {
-            "value": 3,
-            "statType": "numeric"
+            "statType": "numeric",
+            "value": 3
           },
           "Radius": {
-            "value": 3,
-            "statType": "numeric"
+            "statType": "numeric",
+            "value": 3
           }
         }
       },
       "Spell§Earthquake": {
-        "meta": {
-          "id": 28000014
-        },
         "keywords": {
           "Rarity": [
             "Rare"
@@ -929,20 +927,23 @@
             "Damage"
           ]
         },
+        "meta": {
+          "id": 28000014
+        },
         "stats": {
           "Arena": {
             "statType": "rank"
           },
           "Cost": {
-            "value": 3,
-            "statType": "numeric"
+            "statType": "numeric",
+            "value": 3
           },
           "Dmg. Type": {
             "statType": "rank"
           },
           "Radius": {
-            "value": 3.5,
-            "statType": "numeric"
+            "statType": "numeric",
+            "value": 3.5
           },
           "Target": {
             "statType": "rank"
@@ -950,9 +951,6 @@
         }
       },
       "Spell§Fireball": {
-        "meta": {
-          "id": 28000000
-        },
         "keywords": {
           "Rarity": [
             "Rare"
@@ -961,20 +959,23 @@
             "Damage"
           ]
         },
+        "meta": {
+          "id": 28000000
+        },
         "stats": {
           "Arena": {
             "statType": "rank"
           },
           "Cost": {
-            "value": 4,
-            "statType": "numeric"
+            "statType": "numeric",
+            "value": 4
           },
           "Dmg. Type": {
             "statType": "rank"
           },
           "Radius": {
-            "value": 2.5,
-            "statType": "numeric"
+            "statType": "numeric",
+            "value": 2.5
           },
           "Target": {
             "statType": "rank"
@@ -982,9 +983,6 @@
         }
       },
       "Spell§Freeze": {
-        "meta": {
-          "id": 28000005
-        },
         "keywords": {
           "Rarity": [
             "Epic"
@@ -993,24 +991,27 @@
             "Utility"
           ]
         },
+        "meta": {
+          "id": 28000005
+        },
         "stats": {
           "Arena": {
             "statType": "rank"
           },
           "Cost": {
-            "value": 4,
-            "statType": "numeric"
+            "statType": "numeric",
+            "value": 4
           },
           "Dmg. Type": {
             "statType": "rank"
           },
           "Radius": {
-            "value": 3,
-            "statType": "numeric"
+            "statType": "numeric",
+            "value": 3
           },
           "Stun": {
-            "value": 4,
-            "statType": "numeric"
+            "statType": "numeric",
+            "value": 4
           },
           "Target": {
             "statType": "rank"
@@ -1018,9 +1019,6 @@
         }
       },
       "Spell§Giant Snowball": {
-        "meta": {
-          "id": 28000017
-        },
         "keywords": {
           "Rarity": [
             "Common"
@@ -1029,20 +1027,23 @@
             "Utility"
           ]
         },
+        "meta": {
+          "id": 28000017
+        },
         "stats": {
           "Arena": {
             "statType": "rank"
           },
           "Cost": {
-            "value": 2,
-            "statType": "numeric"
+            "statType": "numeric",
+            "value": 2
           },
           "Dmg. Type": {
             "statType": "rank"
           },
           "Radius": {
-            "value": 2.5,
-            "statType": "numeric"
+            "statType": "numeric",
+            "value": 2.5
           },
           "Target": {
             "statType": "rank"
@@ -1055,9 +1056,6 @@
             "Spawn§Goblins"
           ]
         },
-        "meta": {
-          "id": 28000004
-        },
         "keywords": {
           "Rarity": [
             "Epic"
@@ -1066,20 +1064,23 @@
             "Spawn"
           ]
         },
+        "meta": {
+          "id": 28000004
+        },
         "stats": {
           "Arena": {
             "statType": "rank"
           },
           "Cost": {
-            "value": 3,
-            "statType": "numeric"
+            "statType": "numeric",
+            "value": 3
           },
           "Dmg. Type": {
             "statType": "rank"
           },
           "Radius": {
-            "value": 1.5,
-            "statType": "numeric"
+            "statType": "numeric",
+            "value": 1.5
           },
           "Target": {
             "statType": "rank"
@@ -1092,9 +1093,6 @@
             "Spawn§Skeletons"
           ]
         },
-        "meta": {
-          "id": 28000010
-        },
         "keywords": {
           "Rarity": [
             "Legendary"
@@ -1103,20 +1101,23 @@
             "Spawn"
           ]
         },
+        "meta": {
+          "id": 28000010
+        },
         "stats": {
           "Arena": {
             "statType": "rank"
           },
           "Cost": {
-            "value": 5,
-            "statType": "numeric"
+            "statType": "numeric",
+            "value": 5
           },
           "Dmg. Type": {
             "statType": "rank"
           },
           "Radius": {
-            "value": 4,
-            "statType": "numeric"
+            "statType": "numeric",
+            "value": 4
           },
           "Target": {
             "statType": "rank"
@@ -1124,9 +1125,6 @@
         }
       },
       "Spell§Lightning": {
-        "meta": {
-          "id": 28000007
-        },
         "keywords": {
           "Rarity": [
             "Epic"
@@ -1135,24 +1133,27 @@
             "Damage"
           ]
         },
+        "meta": {
+          "id": 28000007
+        },
         "stats": {
           "Arena": {
             "statType": "rank"
           },
           "Cost": {
-            "value": 6,
-            "statType": "numeric"
+            "statType": "numeric",
+            "value": 6
           },
           "Dmg. Type": {
             "statType": "rank"
           },
           "Radius": {
-            "value": 3.5,
-            "statType": "numeric"
+            "statType": "numeric",
+            "value": 3.5
           },
           "Stun": {
-            "value": 0.5,
-            "statType": "numeric"
+            "statType": "numeric",
+            "value": 0.5
           },
           "Target": {
             "statType": "rank"
@@ -1160,9 +1161,6 @@
         }
       },
       "Spell§Mirror": {
-        "meta": {
-          "id": 28000006
-        },
         "keywords": {
           "Rarity": [
             "Epic"
@@ -1171,20 +1169,20 @@
             "Utility"
           ]
         },
+        "meta": {
+          "id": 28000006
+        },
         "stats": {
           "Arena": {
             "statType": "rank"
           },
           "Cost": {
-            "value": "?",
-            "statType": "numeric"
+            "statType": "numeric",
+            "value": "?"
           }
         }
       },
       "Spell§Poison": {
-        "meta": {
-          "id": 28000009
-        },
         "keywords": {
           "Rarity": [
             "Epic"
@@ -1193,20 +1191,23 @@
             "Damage"
           ]
         },
+        "meta": {
+          "id": 28000009
+        },
         "stats": {
           "Arena": {
             "statType": "rank"
           },
           "Cost": {
-            "value": 4,
-            "statType": "numeric"
+            "statType": "numeric",
+            "value": 4
           },
           "Dmg. Type": {
             "statType": "rank"
           },
           "Radius": {
-            "value": 3.5,
-            "statType": "numeric"
+            "statType": "numeric",
+            "value": 3.5
           },
           "Target": {
             "statType": "rank"
@@ -1214,9 +1215,6 @@
         }
       },
       "Spell§Rage": {
-        "meta": {
-          "id": 28000002
-        },
         "keywords": {
           "Rarity": [
             "Epic"
@@ -1225,24 +1223,24 @@
             "Utility"
           ]
         },
+        "meta": {
+          "id": 28000002
+        },
         "stats": {
           "Arena": {
             "statType": "rank"
           },
           "Cost": {
-            "value": 2,
-            "statType": "numeric"
+            "statType": "numeric",
+            "value": 2
           },
           "Radius": {
-            "value": 5,
-            "statType": "numeric"
+            "statType": "numeric",
+            "value": 5
           }
         }
       },
       "Spell§Rocket": {
-        "meta": {
-          "id": 28000003
-        },
         "keywords": {
           "Rarity": [
             "Rare"
@@ -1251,20 +1249,23 @@
             "Damage"
           ]
         },
+        "meta": {
+          "id": 28000003
+        },
         "stats": {
           "Arena": {
             "statType": "rank"
           },
           "Cost": {
-            "value": 6,
-            "statType": "numeric"
+            "statType": "numeric",
+            "value": 6
           },
           "Dmg. Type": {
             "statType": "rank"
           },
           "Radius": {
-            "value": 2,
-            "statType": "numeric"
+            "statType": "numeric",
+            "value": 2
           },
           "Target": {
             "statType": "rank"
@@ -1277,9 +1278,6 @@
             "Spawn§Royal Recruit"
           ]
         },
-        "meta": {
-          "id": 28000018
-        },
         "keywords": {
           "Rarity": [
             "Common"
@@ -1288,20 +1286,23 @@
             "Spawn"
           ]
         },
+        "meta": {
+          "id": 28000018
+        },
         "stats": {
           "Arena": {
             "statType": "rank"
           },
           "Cost": {
-            "value": 3,
-            "statType": "numeric"
+            "statType": "numeric",
+            "value": 3
           },
           "Dmg. Type": {
             "statType": "rank"
           },
           "Radius": {
-            "value": 3,
-            "statType": "numeric"
+            "statType": "numeric",
+            "value": 3
           },
           "Target": {
             "statType": "rank"
@@ -1309,9 +1310,6 @@
         }
       },
       "Spell§The Log": {
-        "meta": {
-          "id": 28000011
-        },
         "keywords": {
           "Rarity": [
             "Legendary"
@@ -1320,38 +1318,38 @@
             "Damage"
           ]
         },
+        "meta": {
+          "id": 28000011
+        },
         "stats": {
           "Arena": {
             "statType": "rank"
           },
           "Cost": {
-            "value": 2,
-            "statType": "numeric"
+            "statType": "numeric",
+            "value": 2
           },
           "Dmg. Type": {
             "statType": "rank"
           },
           "Range": {
-            "value": 11.1,
-            "statType": "numeric"
+            "statType": "numeric",
+            "value": 11.1
           },
           "Stun": {
-            "value": 1,
-            "statType": "numeric"
+            "statType": "numeric",
+            "value": 1
           },
           "Target": {
             "statType": "rank"
           },
           "Width": {
-            "value": 3.9,
-            "statType": "numeric"
+            "statType": "numeric",
+            "value": 3.9
           }
         }
       },
       "Spell§Tornado": {
-        "meta": {
-          "id": 28000012
-        },
         "keywords": {
           "Rarity": [
             "Epic"
@@ -1360,20 +1358,23 @@
             "Utility"
           ]
         },
+        "meta": {
+          "id": 28000012
+        },
         "stats": {
           "Arena": {
             "statType": "rank"
           },
           "Cost": {
-            "value": 3,
-            "statType": "numeric"
+            "statType": "numeric",
+            "value": 3
           },
           "Dmg. Type": {
             "statType": "rank"
           },
           "Radius": {
-            "value": 5.5,
-            "statType": "numeric"
+            "statType": "numeric",
+            "value": 5.5
           },
           "Target": {
             "statType": "rank"
@@ -1381,9 +1382,6 @@
         }
       },
       "Spell§Zap": {
-        "meta": {
-          "id": 28000008
-        },
         "keywords": {
           "Rarity": [
             "Common"
@@ -1392,24 +1390,27 @@
             "Damage"
           ]
         },
+        "meta": {
+          "id": 28000008
+        },
         "stats": {
           "Arena": {
             "statType": "rank"
           },
           "Cost": {
-            "value": 2,
-            "statType": "numeric"
+            "statType": "numeric",
+            "value": 2
           },
           "Dmg. Type": {
             "statType": "rank"
           },
           "Radius": {
-            "value": 2.5,
-            "statType": "numeric"
+            "statType": "numeric",
+            "value": 2.5
           },
           "Stun": {
-            "value": 0.5,
-            "statType": "numeric"
+            "statType": "numeric",
+            "value": 0.5
           },
           "Target": {
             "statType": "rank"
@@ -1417,9 +1418,6 @@
         }
       },
       "Troop§Archers": {
-        "meta": {
-          "id": 26000001
-        },
         "keywords": {
           "Rarity": [
             "Common"
@@ -1428,17 +1426,20 @@
             "Damage"
           ]
         },
+        "meta": {
+          "id": 26000001
+        },
         "stats": {
           "Arena": {
             "statType": "rank"
           },
           "Cost": {
-            "value": 3,
-            "statType": "numeric"
+            "statType": "numeric",
+            "value": 3
           },
           "Count": {
-            "value": 2,
-            "statType": "numeric"
+            "statType": "numeric",
+            "value": 2
           },
           "Dmg. Type": {
             "statType": "rank"
@@ -1452,9 +1453,6 @@
         }
       },
       "Troop§Baby Dragon": {
-        "meta": {
-          "id": 26000015
-        },
         "keywords": {
           "Rarity": [
             "Epic"
@@ -1463,17 +1461,20 @@
             "Versatile"
           ]
         },
+        "meta": {
+          "id": 26000015
+        },
         "stats": {
           "Arena": {
             "statType": "rank"
           },
           "Cost": {
-            "value": 4,
-            "statType": "numeric"
+            "statType": "numeric",
+            "value": 4
           },
           "Count": {
-            "value": 1,
-            "statType": "numeric"
+            "statType": "numeric",
+            "value": 1
           },
           "Dmg. Type": {
             "statType": "rank"
@@ -1487,9 +1488,6 @@
         }
       },
       "Troop§Balloon": {
-        "meta": {
-          "id": 26000006
-        },
         "keywords": {
           "Rarity": [
             "Epic"
@@ -1498,17 +1496,20 @@
             "Demo"
           ]
         },
+        "meta": {
+          "id": 26000006
+        },
         "stats": {
           "Arena": {
             "statType": "rank"
           },
           "Cost": {
-            "value": 5,
-            "statType": "numeric"
+            "statType": "numeric",
+            "value": 5
           },
           "Count": {
-            "value": 1,
-            "statType": "numeric"
+            "statType": "numeric",
+            "value": 1
           },
           "Dmg. Type": {
             "statType": "rank"
@@ -1522,9 +1523,6 @@
         }
       },
       "Troop§Bandit": {
-        "meta": {
-          "id": 26000046
-        },
         "keywords": {
           "Rarity": [
             "Legendary"
@@ -1533,17 +1531,20 @@
             "Damage"
           ]
         },
+        "meta": {
+          "id": 26000046
+        },
         "stats": {
           "Arena": {
             "statType": "rank"
           },
           "Cost": {
-            "value": 3,
-            "statType": "numeric"
+            "statType": "numeric",
+            "value": 3
           },
           "Count": {
-            "value": 1,
-            "statType": "numeric"
+            "statType": "numeric",
+            "value": 1
           },
           "Dmg. Type": {
             "statType": "rank"
@@ -1557,9 +1558,6 @@
         }
       },
       "Troop§Barbarians": {
-        "meta": {
-          "id": 26000008
-        },
         "keywords": {
           "Rarity": [
             "Common"
@@ -1568,17 +1566,20 @@
             "Versatile"
           ]
         },
+        "meta": {
+          "id": 26000008
+        },
         "stats": {
           "Arena": {
             "statType": "rank"
           },
           "Cost": {
-            "value": 5,
-            "statType": "numeric"
+            "statType": "numeric",
+            "value": 5
           },
           "Count": {
-            "value": 5,
-            "statType": "numeric"
+            "statType": "numeric",
+            "value": 5
           },
           "Dmg. Type": {
             "statType": "rank"
@@ -1592,9 +1593,6 @@
         }
       },
       "Troop§Bats": {
-        "meta": {
-          "id": 26000049
-        },
         "keywords": {
           "Rarity": [
             "Common"
@@ -1603,17 +1601,20 @@
             "Damage"
           ]
         },
+        "meta": {
+          "id": 26000049
+        },
         "stats": {
           "Arena": {
             "statType": "rank"
           },
           "Cost": {
-            "value": 2,
-            "statType": "numeric"
+            "statType": "numeric",
+            "value": 2
           },
           "Count": {
-            "value": 5,
-            "statType": "numeric"
+            "statType": "numeric",
+            "value": 5
           },
           "Dmg. Type": {
             "statType": "rank"
@@ -1627,9 +1628,6 @@
         }
       },
       "Troop§Battle Healer": {
-        "meta": {
-          "id": 26000068
-        },
         "keywords": {
           "Rarity": [
             "Rare"
@@ -1638,17 +1636,20 @@
             "Utility"
           ]
         },
+        "meta": {
+          "id": 26000068
+        },
         "stats": {
           "Arena": {
             "statType": "rank"
           },
           "Cost": {
-            "value": 4,
-            "statType": "numeric"
+            "statType": "numeric",
+            "value": 4
           },
           "Count": {
-            "value": 1,
-            "statType": "numeric"
+            "statType": "numeric",
+            "value": 1
           },
           "Dmg. Type": {
             "statType": "rank"
@@ -1667,9 +1668,6 @@
             "Spawn§Barbarians"
           ]
         },
-        "meta": {
-          "id": 26000036
-        },
         "keywords": {
           "Rarity": [
             "Rare"
@@ -1678,17 +1676,20 @@
             "Demo"
           ]
         },
+        "meta": {
+          "id": 26000036
+        },
         "stats": {
           "Arena": {
             "statType": "rank"
           },
           "Cost": {
-            "value": 4,
-            "statType": "numeric"
+            "statType": "numeric",
+            "value": 4
           },
           "Count": {
-            "value": 1,
-            "statType": "numeric"
+            "statType": "numeric",
+            "value": 1
           },
           "Dmg. Type": {
             "statType": "rank"
@@ -1702,9 +1703,6 @@
         }
       },
       "Troop§Bomber": {
-        "meta": {
-          "id": 26000013
-        },
         "keywords": {
           "Rarity": [
             "Common"
@@ -1713,17 +1711,20 @@
             "Damage"
           ]
         },
+        "meta": {
+          "id": 26000013
+        },
         "stats": {
           "Arena": {
             "statType": "rank"
           },
           "Cost": {
-            "value": 2,
-            "statType": "numeric"
+            "statType": "numeric",
+            "value": 2
           },
           "Count": {
-            "value": 1,
-            "statType": "numeric"
+            "statType": "numeric",
+            "value": 1
           },
           "Dmg. Type": {
             "statType": "rank"
@@ -1737,9 +1738,6 @@
         }
       },
       "Troop§Bowler": {
-        "meta": {
-          "id": 26000034
-        },
         "keywords": {
           "Rarity": [
             "Epic"
@@ -1748,17 +1746,20 @@
             "Damage"
           ]
         },
+        "meta": {
+          "id": 26000034
+        },
         "stats": {
           "Arena": {
             "statType": "rank"
           },
           "Cost": {
-            "value": 5,
-            "statType": "numeric"
+            "statType": "numeric",
+            "value": 5
           },
           "Count": {
-            "value": 1,
-            "statType": "numeric"
+            "statType": "numeric",
+            "value": 1
           },
           "Dmg. Type": {
             "statType": "rank"
@@ -1772,9 +1773,6 @@
         }
       },
       "Troop§Cannon Cart": {
-        "meta": {
-          "id": 26000054
-        },
         "keywords": {
           "Rarity": [
             "Epic"
@@ -1783,17 +1781,20 @@
             "Damage"
           ]
         },
+        "meta": {
+          "id": 26000054
+        },
         "stats": {
           "Arena": {
             "statType": "rank"
           },
           "Cost": {
-            "value": 5,
-            "statType": "numeric"
+            "statType": "numeric",
+            "value": 5
           },
           "Count": {
-            "value": 1,
-            "statType": "numeric"
+            "statType": "numeric",
+            "value": 1
           },
           "Dmg. Type": {
             "statType": "rank"
@@ -1807,9 +1808,6 @@
         }
       },
       "Troop§Dark Prince": {
-        "meta": {
-          "id": 26000027
-        },
         "keywords": {
           "Rarity": [
             "Epic"
@@ -1818,17 +1816,20 @@
             "Versatile"
           ]
         },
+        "meta": {
+          "id": 26000027
+        },
         "stats": {
           "Arena": {
             "statType": "rank"
           },
           "Cost": {
-            "value": 4,
-            "statType": "numeric"
+            "statType": "numeric",
+            "value": 4
           },
           "Count": {
-            "value": 1,
-            "statType": "numeric"
+            "statType": "numeric",
+            "value": 1
           },
           "Dmg. Type": {
             "statType": "rank"
@@ -1842,9 +1843,6 @@
         }
       },
       "Troop§Dart Goblin": {
-        "meta": {
-          "id": 26000040
-        },
         "keywords": {
           "Rarity": [
             "Rare"
@@ -1853,17 +1851,20 @@
             "Damage"
           ]
         },
+        "meta": {
+          "id": 26000040
+        },
         "stats": {
           "Arena": {
             "statType": "rank"
           },
           "Cost": {
-            "value": 3,
-            "statType": "numeric"
+            "statType": "numeric",
+            "value": 3
           },
           "Count": {
-            "value": 1,
-            "statType": "numeric"
+            "statType": "numeric",
+            "value": 1
           },
           "Dmg. Type": {
             "statType": "rank"
@@ -1877,9 +1878,6 @@
         }
       },
       "Troop§Electro Dragon": {
-        "meta": {
-          "id": 26000063
-        },
         "keywords": {
           "Rarity": [
             "Epic"
@@ -1888,24 +1886,27 @@
             "Damage"
           ]
         },
+        "meta": {
+          "id": 26000063
+        },
         "stats": {
           "Arena": {
             "statType": "rank"
           },
           "Cost": {
-            "value": 5,
-            "statType": "numeric"
+            "statType": "numeric",
+            "value": 5
           },
           "Count": {
-            "value": 1,
-            "statType": "numeric"
+            "statType": "numeric",
+            "value": 1
           },
           "Dmg. Type": {
             "statType": "rank"
           },
           "Stun": {
-            "value": 0.5,
-            "statType": "numeric"
+            "statType": "numeric",
+            "value": 0.5
           },
           "Target": {
             "statType": "rank"
@@ -1916,9 +1917,6 @@
         }
       },
       "Troop§Electro Giant": {
-        "meta": {
-          "id": 26000085
-        },
         "keywords": {
           "Rarity": [
             "Epic"
@@ -1927,24 +1925,27 @@
             "Tank"
           ]
         },
+        "meta": {
+          "id": 26000085
+        },
         "stats": {
           "Arena": {
             "statType": "rank"
           },
           "Cost": {
-            "value": 8,
-            "statType": "numeric"
+            "statType": "numeric",
+            "value": 8
           },
           "Count": {
-            "value": 1,
-            "statType": "numeric"
+            "statType": "numeric",
+            "value": 1
           },
           "Dmg. Type": {
             "statType": "rank"
           },
           "Stun": {
-            "value": 0.5,
-            "statType": "numeric"
+            "statType": "numeric",
+            "value": 0.5
           },
           "Target": {
             "statType": "rank"
@@ -1955,9 +1956,6 @@
         }
       },
       "Troop§Electro Spirit": {
-        "meta": {
-          "id": 26000084
-        },
         "keywords": {
           "Rarity": [
             "Common"
@@ -1966,24 +1964,27 @@
             "Damage"
           ]
         },
+        "meta": {
+          "id": 26000084
+        },
         "stats": {
           "Arena": {
             "statType": "rank"
           },
           "Cost": {
-            "value": 1,
-            "statType": "numeric"
+            "statType": "numeric",
+            "value": 1
           },
           "Count": {
-            "value": 1,
-            "statType": "numeric"
+            "statType": "numeric",
+            "value": 1
           },
           "Dmg. Type": {
             "statType": "rank"
           },
           "Stun": {
-            "value": 0.5,
-            "statType": "numeric"
+            "statType": "numeric",
+            "value": 0.5
           },
           "Target": {
             "statType": "rank"
@@ -1994,9 +1995,6 @@
         }
       },
       "Troop§Electro Wizard": {
-        "meta": {
-          "id": 26000042
-        },
         "keywords": {
           "Rarity": [
             "Legendary"
@@ -2005,24 +2003,27 @@
             "Damage"
           ]
         },
+        "meta": {
+          "id": 26000042
+        },
         "stats": {
           "Arena": {
             "statType": "rank"
           },
           "Cost": {
-            "value": 4,
-            "statType": "numeric"
+            "statType": "numeric",
+            "value": 4
           },
           "Count": {
-            "value": 1,
-            "statType": "numeric"
+            "statType": "numeric",
+            "value": 1
           },
           "Dmg. Type": {
             "statType": "rank"
           },
           "Stun": {
-            "value": 0.5,
-            "statType": "numeric"
+            "statType": "numeric",
+            "value": 0.5
           },
           "Target": {
             "statType": "rank"
@@ -2033,9 +2034,6 @@
         }
       },
       "Troop§Elite Barbarians": {
-        "meta": {
-          "id": 26000043
-        },
         "keywords": {
           "Rarity": [
             "Common"
@@ -2044,17 +2042,20 @@
             "Versatile"
           ]
         },
+        "meta": {
+          "id": 26000043
+        },
         "stats": {
           "Arena": {
             "statType": "rank"
           },
           "Cost": {
-            "value": 6,
-            "statType": "numeric"
+            "statType": "numeric",
+            "value": 6
           },
           "Count": {
-            "value": 2,
-            "statType": "numeric"
+            "statType": "numeric",
+            "value": 2
           },
           "Dmg. Type": {
             "statType": "rank"
@@ -2068,9 +2069,6 @@
         }
       },
       "Troop§Elixir Golem": {
-        "meta": {
-          "id": 26000067
-        },
         "keywords": {
           "Rarity": [
             "Rare"
@@ -2079,17 +2077,20 @@
             "Tank"
           ]
         },
+        "meta": {
+          "id": 26000067
+        },
         "stats": {
           "Arena": {
             "statType": "rank"
           },
           "Cost": {
-            "value": 3,
-            "statType": "numeric"
+            "statType": "numeric",
+            "value": 3
           },
           "Count": {
-            "value": 1,
-            "statType": "numeric"
+            "statType": "numeric",
+            "value": 1
           },
           "Dmg. Type": {
             "statType": "rank"
@@ -2103,9 +2104,6 @@
         }
       },
       "Troop§Executioner": {
-        "meta": {
-          "id": 26000045
-        },
         "keywords": {
           "Rarity": [
             "Epic"
@@ -2114,17 +2112,20 @@
             "Damage"
           ]
         },
+        "meta": {
+          "id": 26000045
+        },
         "stats": {
           "Arena": {
             "statType": "rank"
           },
           "Cost": {
-            "value": 5,
-            "statType": "numeric"
+            "statType": "numeric",
+            "value": 5
           },
           "Count": {
-            "value": 1,
-            "statType": "numeric"
+            "statType": "numeric",
+            "value": 1
           },
           "Dmg. Type": {
             "statType": "rank"
@@ -2138,9 +2139,6 @@
         }
       },
       "Troop§Fire Spirit": {
-        "meta": {
-          "id": 26000031
-        },
         "keywords": {
           "Rarity": [
             "Common"
@@ -2149,17 +2147,20 @@
             "Damage"
           ]
         },
+        "meta": {
+          "id": 26000031
+        },
         "stats": {
           "Arena": {
             "statType": "rank"
           },
           "Cost": {
-            "value": 1,
-            "statType": "numeric"
+            "statType": "numeric",
+            "value": 1
           },
           "Count": {
-            "value": 1,
-            "statType": "numeric"
+            "statType": "numeric",
+            "value": 1
           },
           "Dmg. Type": {
             "statType": "rank"
@@ -2176,9 +2177,6 @@
         }
       },
       "Troop§Firecracker": {
-        "meta": {
-          "id": 26000064
-        },
         "keywords": {
           "Rarity": [
             "Common"
@@ -2187,17 +2185,20 @@
             "Damage"
           ]
         },
+        "meta": {
+          "id": 26000064
+        },
         "stats": {
           "Arena": {
             "statType": "rank"
           },
           "Cost": {
-            "value": 3,
-            "statType": "numeric"
+            "statType": "numeric",
+            "value": 3
           },
           "Count": {
-            "value": 1,
-            "statType": "numeric"
+            "statType": "numeric",
+            "value": 1
           },
           "Dmg. Type": {
             "statType": "rank"
@@ -2211,9 +2212,6 @@
         }
       },
       "Troop§Fisherman": {
-        "meta": {
-          "id": 26000061
-        },
         "keywords": {
           "Rarity": [
             "Legendary"
@@ -2222,17 +2220,20 @@
             "Utility"
           ]
         },
+        "meta": {
+          "id": 26000061
+        },
         "stats": {
           "Arena": {
             "statType": "rank"
           },
           "Cost": {
-            "value": 3,
-            "statType": "numeric"
+            "statType": "numeric",
+            "value": 3
           },
           "Count": {
-            "value": 1,
-            "statType": "numeric"
+            "statType": "numeric",
+            "value": 1
           },
           "Dmg. Type": {
             "statType": "rank"
@@ -2246,9 +2247,6 @@
         }
       },
       "Troop§Flying Machine": {
-        "meta": {
-          "id": 26000057
-        },
         "keywords": {
           "Rarity": [
             "Rare"
@@ -2257,17 +2255,20 @@
             "Damage"
           ]
         },
+        "meta": {
+          "id": 26000057
+        },
         "stats": {
           "Arena": {
             "statType": "rank"
           },
           "Cost": {
-            "value": 4,
-            "statType": "numeric"
+            "statType": "numeric",
+            "value": 4
           },
           "Count": {
-            "value": 1,
-            "statType": "numeric"
+            "statType": "numeric",
+            "value": 1
           },
           "Dmg. Type": {
             "statType": "rank"
@@ -2281,9 +2282,6 @@
         }
       },
       "Troop§Giant": {
-        "meta": {
-          "id": 26000003
-        },
         "keywords": {
           "Rarity": [
             "Rare"
@@ -2292,17 +2290,20 @@
             "Tank"
           ]
         },
+        "meta": {
+          "id": 26000003
+        },
         "stats": {
           "Arena": {
             "statType": "rank"
           },
           "Cost": {
-            "value": 5,
-            "statType": "numeric"
+            "statType": "numeric",
+            "value": 5
           },
           "Count": {
-            "value": 1,
-            "statType": "numeric"
+            "statType": "numeric",
+            "value": 1
           },
           "Dmg. Type": {
             "statType": "rank"
@@ -2316,9 +2317,6 @@
         }
       },
       "Troop§Giant Skeleton": {
-        "meta": {
-          "id": 26000020
-        },
         "keywords": {
           "Rarity": [
             "Epic"
@@ -2327,17 +2325,20 @@
             "Versatile"
           ]
         },
+        "meta": {
+          "id": 26000020
+        },
         "stats": {
           "Arena": {
             "statType": "rank"
           },
           "Cost": {
-            "value": 6,
-            "statType": "numeric"
+            "statType": "numeric",
+            "value": 6
           },
           "Count": {
-            "value": 1,
-            "statType": "numeric"
+            "statType": "numeric",
+            "value": 1
           },
           "Dmg. Type": {
             "statType": "rank"
@@ -2351,9 +2352,6 @@
         }
       },
       "Troop§Goblin Gang": {
-        "meta": {
-          "id": 26000041
-        },
         "keywords": {
           "Rarity": [
             "Common"
@@ -2362,17 +2360,20 @@
             "Damage"
           ]
         },
+        "meta": {
+          "id": 26000041
+        },
         "stats": {
           "Arena": {
             "statType": "rank"
           },
           "Cost": {
-            "value": 3,
-            "statType": "numeric"
+            "statType": "numeric",
+            "value": 3
           },
           "Count": {
-            "value": 3,
-            "statType": "numeric"
+            "statType": "numeric",
+            "value": 3
           },
           "Dmg. Type": {
             "statType": "rank"
@@ -2386,9 +2387,6 @@
         }
       },
       "Troop§Goblin Giant": {
-        "meta": {
-          "id": 26000060
-        },
         "keywords": {
           "Rarity": [
             "Epic"
@@ -2397,17 +2395,20 @@
             "Tank"
           ]
         },
+        "meta": {
+          "id": 26000060
+        },
         "stats": {
           "Arena": {
             "statType": "rank"
           },
           "Cost": {
-            "value": 6,
-            "statType": "numeric"
+            "statType": "numeric",
+            "value": 6
           },
           "Count": {
-            "value": 1,
-            "statType": "numeric"
+            "statType": "numeric",
+            "value": 1
           },
           "Dmg. Type": {
             "statType": "rank"
@@ -2421,9 +2422,6 @@
         }
       },
       "Troop§Goblins": {
-        "meta": {
-          "id": 26000002
-        },
         "keywords": {
           "Rarity": [
             "Common"
@@ -2432,17 +2430,20 @@
             "Damage"
           ]
         },
+        "meta": {
+          "id": 26000002
+        },
         "stats": {
           "Arena": {
             "statType": "rank"
           },
           "Cost": {
-            "value": 2,
-            "statType": "numeric"
+            "statType": "numeric",
+            "value": 2
           },
           "Count": {
-            "value": 3,
-            "statType": "numeric"
+            "statType": "numeric",
+            "value": 3
           },
           "Dmg. Type": {
             "statType": "rank"
@@ -2456,9 +2457,6 @@
         }
       },
       "Troop§Golem": {
-        "meta": {
-          "id": 26000009
-        },
         "keywords": {
           "Rarity": [
             "Epic"
@@ -2467,17 +2465,20 @@
             "Tank"
           ]
         },
+        "meta": {
+          "id": 26000009
+        },
         "stats": {
           "Arena": {
             "statType": "rank"
           },
           "Cost": {
-            "value": 8,
-            "statType": "numeric"
+            "statType": "numeric",
+            "value": 8
           },
           "Count": {
-            "value": 1,
-            "statType": "numeric"
+            "statType": "numeric",
+            "value": 1
           },
           "Dmg. Type": {
             "statType": "rank"
@@ -2491,9 +2492,6 @@
         }
       },
       "Troop§Guards": {
-        "meta": {
-          "id": 26000025
-        },
         "keywords": {
           "Rarity": [
             "Epic"
@@ -2502,17 +2500,20 @@
             "Versatile"
           ]
         },
+        "meta": {
+          "id": 26000025
+        },
         "stats": {
           "Arena": {
             "statType": "rank"
           },
           "Cost": {
-            "value": 3,
-            "statType": "numeric"
+            "statType": "numeric",
+            "value": 3
           },
           "Count": {
-            "value": 3,
-            "statType": "numeric"
+            "statType": "numeric",
+            "value": 3
           },
           "Dmg. Type": {
             "statType": "rank"
@@ -2526,9 +2527,6 @@
         }
       },
       "Troop§Heal Spirit": {
-        "meta": {
-          "id": 28000016
-        },
         "keywords": {
           "Rarity": [
             "Rare"
@@ -2537,17 +2535,20 @@
             "Utility"
           ]
         },
+        "meta": {
+          "id": 28000016
+        },
         "stats": {
           "Arena": {
             "statType": "rank"
           },
           "Cost": {
-            "value": 1,
-            "statType": "numeric"
+            "statType": "numeric",
+            "value": 1
           },
           "Count": {
-            "value": 1,
-            "statType": "numeric"
+            "statType": "numeric",
+            "value": 1
           },
           "Dmg. Type": {
             "statType": "rank"
@@ -2561,9 +2562,6 @@
         }
       },
       "Troop§Hog Rider": {
-        "meta": {
-          "id": 26000021
-        },
         "keywords": {
           "Rarity": [
             "Rare"
@@ -2572,17 +2570,20 @@
             "Demo"
           ]
         },
+        "meta": {
+          "id": 26000021
+        },
         "stats": {
           "Arena": {
             "statType": "rank"
           },
           "Cost": {
-            "value": 4,
-            "statType": "numeric"
+            "statType": "numeric",
+            "value": 4
           },
           "Count": {
-            "value": 1,
-            "statType": "numeric"
+            "statType": "numeric",
+            "value": 1
           },
           "Dmg. Type": {
             "statType": "rank"
@@ -2596,9 +2597,6 @@
         }
       },
       "Troop§Hunter": {
-        "meta": {
-          "id": 26000044
-        },
         "keywords": {
           "Rarity": [
             "Epic"
@@ -2607,17 +2605,20 @@
             "Damage"
           ]
         },
+        "meta": {
+          "id": 26000044
+        },
         "stats": {
           "Arena": {
             "statType": "rank"
           },
           "Cost": {
-            "value": 4,
-            "statType": "numeric"
+            "statType": "numeric",
+            "value": 4
           },
           "Count": {
-            "value": 1,
-            "statType": "numeric"
+            "statType": "numeric",
+            "value": 1
           },
           "Dmg. Type": {
             "statType": "rank"
@@ -2631,9 +2632,6 @@
         }
       },
       "Troop§Ice Golem": {
-        "meta": {
-          "id": 26000038
-        },
         "keywords": {
           "Rarity": [
             "Rare"
@@ -2642,17 +2640,20 @@
             "Tank"
           ]
         },
+        "meta": {
+          "id": 26000038
+        },
         "stats": {
           "Arena": {
             "statType": "rank"
           },
           "Cost": {
-            "value": 2,
-            "statType": "numeric"
+            "statType": "numeric",
+            "value": 2
           },
           "Count": {
-            "value": 1,
-            "statType": "numeric"
+            "statType": "numeric",
+            "value": 1
           },
           "Dmg. Type": {
             "statType": "rank"
@@ -2666,9 +2667,6 @@
         }
       },
       "Troop§Ice Spirit": {
-        "meta": {
-          "id": 26000030
-        },
         "keywords": {
           "Rarity": [
             "Common"
@@ -2677,24 +2675,27 @@
             "Utility"
           ]
         },
+        "meta": {
+          "id": 26000030
+        },
         "stats": {
           "Arena": {
             "statType": "rank"
           },
           "Cost": {
-            "value": 1,
-            "statType": "numeric"
+            "statType": "numeric",
+            "value": 1
           },
           "Count": {
-            "value": 1,
-            "statType": "numeric"
+            "statType": "numeric",
+            "value": 1
           },
           "Dmg. Type": {
             "statType": "rank"
           },
           "Stun": {
-            "value": 1,
-            "statType": "numeric"
+            "statType": "numeric",
+            "value": 1
           },
           "Suicide": {
             "statType": "rank"
@@ -2708,9 +2709,6 @@
         }
       },
       "Troop§Ice Wizard": {
-        "meta": {
-          "id": 26000023
-        },
         "keywords": {
           "Rarity": [
             "Legendary"
@@ -2719,17 +2717,20 @@
             "Utility"
           ]
         },
+        "meta": {
+          "id": 26000023
+        },
         "stats": {
           "Arena": {
             "statType": "rank"
           },
           "Cost": {
-            "value": 3,
-            "statType": "numeric"
+            "statType": "numeric",
+            "value": 3
           },
           "Count": {
-            "value": 1,
-            "statType": "numeric"
+            "statType": "numeric",
+            "value": 1
           },
           "Dmg. Type": {
             "statType": "rank"
@@ -2743,9 +2744,6 @@
         }
       },
       "Troop§Inferno Dragon": {
-        "meta": {
-          "id": 26000037
-        },
         "keywords": {
           "Rarity": [
             "Legendary"
@@ -2754,17 +2752,20 @@
             "Versatile"
           ]
         },
+        "meta": {
+          "id": 26000037
+        },
         "stats": {
           "Arena": {
             "statType": "rank"
           },
           "Cost": {
-            "value": 4,
-            "statType": "numeric"
+            "statType": "numeric",
+            "value": 4
           },
           "Count": {
-            "value": 1,
-            "statType": "numeric"
+            "statType": "numeric",
+            "value": 1
           },
           "Dmg. Type": {
             "statType": "rank"
@@ -2778,9 +2779,6 @@
         }
       },
       "Troop§Knight": {
-        "meta": {
-          "id": 26000000
-        },
         "keywords": {
           "Rarity": [
             "Common"
@@ -2789,17 +2787,20 @@
             "Versatile"
           ]
         },
+        "meta": {
+          "id": 26000000
+        },
         "stats": {
           "Arena": {
             "statType": "rank"
           },
           "Cost": {
-            "value": 3,
-            "statType": "numeric"
+            "statType": "numeric",
+            "value": 3
           },
           "Count": {
-            "value": 1,
-            "statType": "numeric"
+            "statType": "numeric",
+            "value": 1
           },
           "Dmg. Type": {
             "statType": "rank"
@@ -2813,9 +2814,6 @@
         }
       },
       "Troop§Lava Hound": {
-        "meta": {
-          "id": 26000029
-        },
         "keywords": {
           "Rarity": [
             "Legendary"
@@ -2824,17 +2822,20 @@
             "Tank"
           ]
         },
+        "meta": {
+          "id": 26000029
+        },
         "stats": {
           "Arena": {
             "statType": "rank"
           },
           "Cost": {
-            "value": 7,
-            "statType": "numeric"
+            "statType": "numeric",
+            "value": 7
           },
           "Count": {
-            "value": 1,
-            "statType": "numeric"
+            "statType": "numeric",
+            "value": 1
           },
           "Dmg. Type": {
             "statType": "rank"
@@ -2853,9 +2854,6 @@
             "Spawn§Rage"
           ]
         },
-        "meta": {
-          "id": 26000035
-        },
         "keywords": {
           "Rarity": [
             "Legendary"
@@ -2864,17 +2862,20 @@
             "Versatile"
           ]
         },
+        "meta": {
+          "id": 26000035
+        },
         "stats": {
           "Arena": {
             "statType": "rank"
           },
           "Cost": {
-            "value": 4,
-            "statType": "numeric"
+            "statType": "numeric",
+            "value": 4
           },
           "Count": {
-            "value": 1,
-            "statType": "numeric"
+            "statType": "numeric",
+            "value": 1
           },
           "Dmg. Type": {
             "statType": "rank"
@@ -2888,9 +2889,6 @@
         }
       },
       "Troop§Magic Archer": {
-        "meta": {
-          "id": 26000062
-        },
         "keywords": {
           "Rarity": [
             "Legendary"
@@ -2899,17 +2897,20 @@
             "Damage"
           ]
         },
+        "meta": {
+          "id": 26000062
+        },
         "stats": {
           "Arena": {
             "statType": "rank"
           },
           "Cost": {
-            "value": 4,
-            "statType": "numeric"
+            "statType": "numeric",
+            "value": 4
           },
           "Count": {
-            "value": 1,
-            "statType": "numeric"
+            "statType": "numeric",
+            "value": 1
           },
           "Dmg. Type": {
             "statType": "rank"
@@ -2923,9 +2924,6 @@
         }
       },
       "Troop§Mega Knight": {
-        "meta": {
-          "id": 26000055
-        },
         "keywords": {
           "Rarity": [
             "Legendary"
@@ -2934,17 +2932,20 @@
             "Versatile"
           ]
         },
+        "meta": {
+          "id": 26000055
+        },
         "stats": {
           "Arena": {
             "statType": "rank"
           },
           "Cost": {
-            "value": 7,
-            "statType": "numeric"
+            "statType": "numeric",
+            "value": 7
           },
           "Count": {
-            "value": 1,
-            "statType": "numeric"
+            "statType": "numeric",
+            "value": 1
           },
           "Dmg. Type": {
             "statType": "rank"
@@ -2958,9 +2959,6 @@
         }
       },
       "Troop§Mega Minion": {
-        "meta": {
-          "id": 26000039
-        },
         "keywords": {
           "Rarity": [
             "Rare"
@@ -2969,17 +2967,20 @@
             "Versatile"
           ]
         },
+        "meta": {
+          "id": 26000039
+        },
         "stats": {
           "Arena": {
             "statType": "rank"
           },
           "Cost": {
-            "value": 3,
-            "statType": "numeric"
+            "statType": "numeric",
+            "value": 3
           },
           "Count": {
-            "value": 1,
-            "statType": "numeric"
+            "statType": "numeric",
+            "value": 1
           },
           "Dmg. Type": {
             "statType": "rank"
@@ -2993,9 +2994,6 @@
         }
       },
       "Troop§Miner": {
-        "meta": {
-          "id": 26000032
-        },
         "keywords": {
           "Rarity": [
             "Legendary"
@@ -3004,17 +3002,20 @@
             "Versatile"
           ]
         },
+        "meta": {
+          "id": 26000032
+        },
         "stats": {
           "Arena": {
             "statType": "rank"
           },
           "Cost": {
-            "value": 3,
-            "statType": "numeric"
+            "statType": "numeric",
+            "value": 3
           },
           "Count": {
-            "value": 1,
-            "statType": "numeric"
+            "statType": "numeric",
+            "value": 1
           },
           "Dmg. Type": {
             "statType": "rank"
@@ -3028,9 +3029,6 @@
         }
       },
       "Troop§Mini P.E.K.K.A": {
-        "meta": {
-          "id": 26000018
-        },
         "keywords": {
           "Rarity": [
             "Rare"
@@ -3039,17 +3037,20 @@
             "Versatile"
           ]
         },
+        "meta": {
+          "id": 26000018
+        },
         "stats": {
           "Arena": {
             "statType": "rank"
           },
           "Cost": {
-            "value": 4,
-            "statType": "numeric"
+            "statType": "numeric",
+            "value": 4
           },
           "Count": {
-            "value": 1,
-            "statType": "numeric"
+            "statType": "numeric",
+            "value": 1
           },
           "Dmg. Type": {
             "statType": "rank"
@@ -3063,9 +3064,6 @@
         }
       },
       "Troop§Minion Horde": {
-        "meta": {
-          "id": 26000022
-        },
         "keywords": {
           "Rarity": [
             "Common"
@@ -3074,17 +3072,20 @@
             "Damage"
           ]
         },
+        "meta": {
+          "id": 26000022
+        },
         "stats": {
           "Arena": {
             "statType": "rank"
           },
           "Cost": {
-            "value": 5,
-            "statType": "numeric"
+            "statType": "numeric",
+            "value": 5
           },
           "Count": {
-            "value": 6,
-            "statType": "numeric"
+            "statType": "numeric",
+            "value": 6
           },
           "Dmg. Type": {
             "statType": "rank"
@@ -3098,9 +3099,6 @@
         }
       },
       "Troop§Minions": {
-        "meta": {
-          "id": 26000005
-        },
         "keywords": {
           "Rarity": [
             "Common"
@@ -3109,17 +3107,20 @@
             "Damage"
           ]
         },
+        "meta": {
+          "id": 26000005
+        },
         "stats": {
           "Arena": {
             "statType": "rank"
           },
           "Cost": {
-            "value": 3,
-            "statType": "numeric"
+            "statType": "numeric",
+            "value": 3
           },
           "Count": {
-            "value": 3,
-            "statType": "numeric"
+            "statType": "numeric",
+            "value": 3
           },
           "Dmg. Type": {
             "statType": "rank"
@@ -3138,9 +3139,6 @@
             "Spawn§Cursed Hog"
           ]
         },
-        "meta": {
-          "id": 26000083
-        },
         "keywords": {
           "Rarity": [
             "Legendary"
@@ -3149,17 +3147,20 @@
             "Damage"
           ]
         },
+        "meta": {
+          "id": 26000083
+        },
         "stats": {
           "Arena": {
             "statType": "rank"
           },
           "Cost": {
-            "value": 4,
-            "statType": "numeric"
+            "statType": "numeric",
+            "value": 4
           },
           "Count": {
-            "value": 1,
-            "statType": "numeric"
+            "statType": "numeric",
+            "value": 1
           },
           "Dmg. Type": {
             "statType": "rank"
@@ -3173,9 +3174,6 @@
         }
       },
       "Troop§Musketeer": {
-        "meta": {
-          "id": 26000014
-        },
         "keywords": {
           "Rarity": [
             "Rare"
@@ -3184,17 +3182,20 @@
             "Damage"
           ]
         },
+        "meta": {
+          "id": 26000014
+        },
         "stats": {
           "Arena": {
             "statType": "rank"
           },
           "Cost": {
-            "value": 4,
-            "statType": "numeric"
+            "statType": "numeric",
+            "value": 4
           },
           "Count": {
-            "value": 1,
-            "statType": "numeric"
+            "statType": "numeric",
+            "value": 1
           },
           "Dmg. Type": {
             "statType": "rank"
@@ -3213,9 +3214,6 @@
             "Spawn§Bats"
           ]
         },
-        "meta": {
-          "id": 26000048
-        },
         "keywords": {
           "Rarity": [
             "Legendary"
@@ -3224,17 +3222,20 @@
             "Damage"
           ]
         },
+        "meta": {
+          "id": 26000048
+        },
         "stats": {
           "Arena": {
             "statType": "rank"
           },
           "Cost": {
-            "value": 4,
-            "statType": "numeric"
+            "statType": "numeric",
+            "value": 4
           },
           "Count": {
-            "value": 1,
-            "statType": "numeric"
+            "statType": "numeric",
+            "value": 1
           },
           "Dmg. Type": {
             "statType": "rank"
@@ -3248,9 +3249,6 @@
         }
       },
       "Troop§P.E.K.K.A": {
-        "meta": {
-          "id": 26000004
-        },
         "keywords": {
           "Rarity": [
             "Epic"
@@ -3259,17 +3257,20 @@
             "Versatile"
           ]
         },
+        "meta": {
+          "id": 26000004
+        },
         "stats": {
           "Arena": {
             "statType": "rank"
           },
           "Cost": {
-            "value": 7,
-            "statType": "numeric"
+            "statType": "numeric",
+            "value": 7
           },
           "Count": {
-            "value": 1,
-            "statType": "numeric"
+            "statType": "numeric",
+            "value": 1
           },
           "Dmg. Type": {
             "statType": "rank"
@@ -3283,9 +3284,6 @@
         }
       },
       "Troop§Prince": {
-        "meta": {
-          "id": 26000016
-        },
         "keywords": {
           "Rarity": [
             "Epic"
@@ -3294,17 +3292,20 @@
             "Versatile"
           ]
         },
+        "meta": {
+          "id": 26000016
+        },
         "stats": {
           "Arena": {
             "statType": "rank"
           },
           "Cost": {
-            "value": 5,
-            "statType": "numeric"
+            "statType": "numeric",
+            "value": 5
           },
           "Count": {
-            "value": 1,
-            "statType": "numeric"
+            "statType": "numeric",
+            "value": 1
           },
           "Dmg. Type": {
             "statType": "rank"
@@ -3318,9 +3319,6 @@
         }
       },
       "Troop§Princess": {
-        "meta": {
-          "id": 26000026
-        },
         "keywords": {
           "Rarity": [
             "Legendary"
@@ -3329,17 +3327,20 @@
             "Damage"
           ]
         },
+        "meta": {
+          "id": 26000026
+        },
         "stats": {
           "Arena": {
             "statType": "rank"
           },
           "Cost": {
-            "value": 3,
-            "statType": "numeric"
+            "statType": "numeric",
+            "value": 3
           },
           "Count": {
-            "value": 1,
-            "statType": "numeric"
+            "statType": "numeric",
+            "value": 1
           },
           "Dmg. Type": {
             "statType": "rank"
@@ -3353,9 +3354,6 @@
         }
       },
       "Troop§Ram Rider": {
-        "meta": {
-          "id": 26000051
-        },
         "keywords": {
           "Rarity": [
             "Legendary"
@@ -3364,17 +3362,20 @@
             "Demo"
           ]
         },
+        "meta": {
+          "id": 26000051
+        },
         "stats": {
           "Arena": {
             "statType": "rank"
           },
           "Cost": {
-            "value": 5,
-            "statType": "numeric"
+            "statType": "numeric",
+            "value": 5
           },
           "Count": {
-            "value": 1,
-            "statType": "numeric"
+            "statType": "numeric",
+            "value": 1
           },
           "Dmg. Type": {
             "statType": "rank"
@@ -3388,9 +3389,6 @@
         }
       },
       "Troop§Rascals": {
-        "meta": {
-          "id": 26000053
-        },
         "keywords": {
           "Rarity": [
             "Common"
@@ -3399,17 +3397,20 @@
             "Damage"
           ]
         },
+        "meta": {
+          "id": 26000053
+        },
         "stats": {
           "Arena": {
             "statType": "rank"
           },
           "Cost": {
-            "value": 5,
-            "statType": "numeric"
+            "statType": "numeric",
+            "value": 5
           },
           "Count": {
-            "value": 1,
-            "statType": "numeric"
+            "statType": "numeric",
+            "value": 1
           },
           "Dmg. Type": {
             "statType": "rank"
@@ -3423,9 +3424,6 @@
         }
       },
       "Troop§Royal Ghost": {
-        "meta": {
-          "id": 26000050
-        },
         "keywords": {
           "Rarity": [
             "Legendary"
@@ -3434,17 +3432,20 @@
             "Damage"
           ]
         },
+        "meta": {
+          "id": 26000050
+        },
         "stats": {
           "Arena": {
             "statType": "rank"
           },
           "Cost": {
-            "value": 3,
-            "statType": "numeric"
+            "statType": "numeric",
+            "value": 3
           },
           "Count": {
-            "value": 1,
-            "statType": "numeric"
+            "statType": "numeric",
+            "value": 1
           },
           "Dmg. Type": {
             "statType": "rank"
@@ -3458,9 +3459,6 @@
         }
       },
       "Troop§Royal Giant": {
-        "meta": {
-          "id": 26000024
-        },
         "keywords": {
           "Rarity": [
             "Common"
@@ -3469,17 +3467,20 @@
             "Demo"
           ]
         },
+        "meta": {
+          "id": 26000024
+        },
         "stats": {
           "Arena": {
             "statType": "rank"
           },
           "Cost": {
-            "value": 6,
-            "statType": "numeric"
+            "statType": "numeric",
+            "value": 6
           },
           "Count": {
-            "value": 1,
-            "statType": "numeric"
+            "statType": "numeric",
+            "value": 1
           },
           "Dmg. Type": {
             "statType": "rank"
@@ -3493,9 +3494,6 @@
         }
       },
       "Troop§Royal Hogs": {
-        "meta": {
-          "id": 26000059
-        },
         "keywords": {
           "Rarity": [
             "Rare"
@@ -3504,17 +3502,20 @@
             "Demo"
           ]
         },
+        "meta": {
+          "id": 26000059
+        },
         "stats": {
           "Arena": {
             "statType": "rank"
           },
           "Cost": {
-            "value": 5,
-            "statType": "numeric"
+            "statType": "numeric",
+            "value": 5
           },
           "Count": {
-            "value": 4,
-            "statType": "numeric"
+            "statType": "numeric",
+            "value": 4
           },
           "Dmg. Type": {
             "statType": "rank"
@@ -3528,9 +3529,6 @@
         }
       },
       "Troop§Royal Recruits": {
-        "meta": {
-          "id": 26000047
-        },
         "keywords": {
           "Rarity": [
             "Common"
@@ -3539,17 +3537,20 @@
             "Versatile"
           ]
         },
+        "meta": {
+          "id": 26000047
+        },
         "stats": {
           "Arena": {
             "statType": "rank"
           },
           "Cost": {
-            "value": 7,
-            "statType": "numeric"
+            "statType": "numeric",
+            "value": 7
           },
           "Count": {
-            "value": 6,
-            "statType": "numeric"
+            "statType": "numeric",
+            "value": 6
           },
           "Dmg. Type": {
             "statType": "rank"
@@ -3563,9 +3564,6 @@
         }
       },
       "Troop§Skeleton Army": {
-        "meta": {
-          "id": 26000012
-        },
         "keywords": {
           "Rarity": [
             "Epic"
@@ -3574,17 +3572,20 @@
             "Damage"
           ]
         },
+        "meta": {
+          "id": 26000012
+        },
         "stats": {
           "Arena": {
             "statType": "rank"
           },
           "Cost": {
-            "value": 3,
-            "statType": "numeric"
+            "statType": "numeric",
+            "value": 3
           },
           "Count": {
-            "value": 15,
-            "statType": "numeric"
+            "statType": "numeric",
+            "value": 15
           },
           "Dmg. Type": {
             "statType": "rank"
@@ -3603,9 +3604,6 @@
             "Spawn§Skeletons"
           ]
         },
-        "meta": {
-          "id": 26000056
-        },
         "keywords": {
           "Rarity": [
             "Common"
@@ -3614,17 +3612,20 @@
             "Demo"
           ]
         },
+        "meta": {
+          "id": 26000056
+        },
         "stats": {
           "Arena": {
             "statType": "rank"
           },
           "Cost": {
-            "value": 3,
-            "statType": "numeric"
+            "statType": "numeric",
+            "value": 3
           },
           "Count": {
-            "value": 1,
-            "statType": "numeric"
+            "statType": "numeric",
+            "value": 1
           },
           "Target": {
             "statType": "rank"
@@ -3635,9 +3636,6 @@
         }
       },
       "Troop§Skeleton Dragons": {
-        "meta": {
-          "id": 26000080
-        },
         "keywords": {
           "Rarity": [
             "Common"
@@ -3646,17 +3644,20 @@
             "Versatile"
           ]
         },
+        "meta": {
+          "id": 26000080
+        },
         "stats": {
           "Arena": {
             "statType": "rank"
           },
           "Cost": {
-            "value": 4,
-            "statType": "numeric"
+            "statType": "numeric",
+            "value": 4
           },
           "Count": {
-            "value": 2,
-            "statType": "numeric"
+            "statType": "numeric",
+            "value": 2
           },
           "Dmg. Type": {
             "statType": "rank"
@@ -3670,9 +3671,6 @@
         }
       },
       "Troop§Skeletons": {
-        "meta": {
-          "id": 26000010
-        },
         "keywords": {
           "Rarity": [
             "Common"
@@ -3681,17 +3679,20 @@
             "Damage"
           ]
         },
+        "meta": {
+          "id": 26000010
+        },
         "stats": {
           "Arena": {
             "statType": "rank"
           },
           "Cost": {
-            "value": 1,
-            "statType": "numeric"
+            "statType": "numeric",
+            "value": 1
           },
           "Count": {
-            "value": 3,
-            "statType": "numeric"
+            "statType": "numeric",
+            "value": 3
           },
           "Dmg. Type": {
             "statType": "rank"
@@ -3705,9 +3706,6 @@
         }
       },
       "Troop§Sparky": {
-        "meta": {
-          "id": 26000033
-        },
         "keywords": {
           "Rarity": [
             "Legendary"
@@ -3716,17 +3714,20 @@
             "Damage"
           ]
         },
+        "meta": {
+          "id": 26000033
+        },
         "stats": {
           "Arena": {
             "statType": "rank"
           },
           "Cost": {
-            "value": 6,
-            "statType": "numeric"
+            "statType": "numeric",
+            "value": 6
           },
           "Count": {
-            "value": 1,
-            "statType": "numeric"
+            "statType": "numeric",
+            "value": 1
           },
           "Dmg. Type": {
             "statType": "rank"
@@ -3740,9 +3741,6 @@
         }
       },
       "Troop§Spear Goblins": {
-        "meta": {
-          "id": 26000019
-        },
         "keywords": {
           "Rarity": [
             "Common"
@@ -3751,17 +3749,20 @@
             "Damage"
           ]
         },
+        "meta": {
+          "id": 26000019
+        },
         "stats": {
           "Arena": {
             "statType": "rank"
           },
           "Cost": {
-            "value": 2,
-            "statType": "numeric"
+            "statType": "numeric",
+            "value": 2
           },
           "Count": {
-            "value": 3,
-            "statType": "numeric"
+            "statType": "numeric",
+            "value": 3
           },
           "Dmg. Type": {
             "statType": "rank"
@@ -3775,9 +3776,6 @@
         }
       },
       "Troop§Three Musketeers": {
-        "meta": {
-          "id": 26000028
-        },
         "keywords": {
           "Rarity": [
             "Rare"
@@ -3786,17 +3784,20 @@
             "Damage"
           ]
         },
+        "meta": {
+          "id": 26000028
+        },
         "stats": {
           "Arena": {
             "statType": "rank"
           },
           "Cost": {
-            "value": 9,
-            "statType": "numeric"
+            "statType": "numeric",
+            "value": 9
           },
           "Count": {
-            "value": 3,
-            "statType": "numeric"
+            "statType": "numeric",
+            "value": 3
           },
           "Dmg. Type": {
             "statType": "rank"
@@ -3810,9 +3811,6 @@
         }
       },
       "Troop§Valkyrie": {
-        "meta": {
-          "id": 26000011
-        },
         "keywords": {
           "Rarity": [
             "Rare"
@@ -3821,17 +3819,20 @@
             "Versatile"
           ]
         },
+        "meta": {
+          "id": 26000011
+        },
         "stats": {
           "Arena": {
             "statType": "rank"
           },
           "Cost": {
-            "value": 4,
-            "statType": "numeric"
+            "statType": "numeric",
+            "value": 4
           },
           "Count": {
-            "value": 1,
-            "statType": "numeric"
+            "statType": "numeric",
+            "value": 1
           },
           "Dmg. Type": {
             "statType": "rank"
@@ -3845,9 +3846,6 @@
         }
       },
       "Troop§Wall Breakers": {
-        "meta": {
-          "id": 26000058
-        },
         "keywords": {
           "Rarity": [
             "Epic"
@@ -3856,17 +3854,20 @@
             "Demo"
           ]
         },
+        "meta": {
+          "id": 26000058
+        },
         "stats": {
           "Arena": {
             "statType": "rank"
           },
           "Cost": {
-            "value": 2,
-            "statType": "numeric"
+            "statType": "numeric",
+            "value": 2
           },
           "Count": {
-            "value": 2,
-            "statType": "numeric"
+            "statType": "numeric",
+            "value": 2
           },
           "Dmg. Type": {
             "statType": "rank"
@@ -3885,9 +3886,6 @@
             "Spawn§Skeletons"
           ]
         },
-        "meta": {
-          "id": 26000007
-        },
         "keywords": {
           "Rarity": [
             "Epic"
@@ -3896,17 +3894,20 @@
             "Damage"
           ]
         },
+        "meta": {
+          "id": 26000007
+        },
         "stats": {
           "Arena": {
             "statType": "rank"
           },
           "Cost": {
-            "value": 5,
-            "statType": "numeric"
+            "statType": "numeric",
+            "value": 5
           },
           "Count": {
-            "value": 1,
-            "statType": "numeric"
+            "statType": "numeric",
+            "value": 1
           },
           "Dmg. Type": {
             "statType": "rank"
@@ -3920,9 +3921,6 @@
         }
       },
       "Troop§Wizard": {
-        "meta": {
-          "id": 26000017
-        },
         "keywords": {
           "Rarity": [
             "Rare"
@@ -3931,17 +3929,20 @@
             "Damage"
           ]
         },
+        "meta": {
+          "id": 26000017
+        },
         "stats": {
           "Arena": {
             "statType": "rank"
           },
           "Cost": {
-            "value": 5,
-            "statType": "numeric"
+            "statType": "numeric",
+            "value": 5
           },
           "Count": {
-            "value": 1,
-            "statType": "numeric"
+            "statType": "numeric",
+            "value": 1
           },
           "Dmg. Type": {
             "statType": "rank"
@@ -3955,9 +3956,6 @@
         }
       },
       "Troop§Zappies": {
-        "meta": {
-          "id": 26000052
-        },
         "keywords": {
           "Rarity": [
             "Rare"
@@ -3966,24 +3964,27 @@
             "Utility"
           ]
         },
+        "meta": {
+          "id": 26000052
+        },
         "stats": {
           "Arena": {
             "statType": "rank"
           },
           "Cost": {
-            "value": 4,
-            "statType": "numeric"
+            "statType": "numeric",
+            "value": 4
           },
           "Count": {
-            "value": 3,
-            "statType": "numeric"
+            "statType": "numeric",
+            "value": 3
           },
           "Dmg. Type": {
             "statType": "rank"
           },
           "Stun": {
-            "value": 0.5,
-            "statType": "numeric"
+            "statType": "numeric",
+            "value": 0.5
           },
           "Target": {
             "statType": "rank"
@@ -3996,6 +3997,5 @@
     },
     "gameModes": {},
     "theme": {}
-  },
-  "wip": true
+  }
 }
