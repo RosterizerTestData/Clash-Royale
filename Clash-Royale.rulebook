@@ -1,6 +1,6 @@
 {
   "name": "Clash Royale",
-  "revision": "0.1.1",
+  "revision": "0.2.0",
   "game": "Clash Royale",
   "genre": "fantasy",
   "publisher": "Supercell",
@@ -683,7 +683,7 @@
           }
         }
       },
-      "Roster§Deck": {
+      "Roster§Roster": {
         "allowed": {
           "classifications": [
             "Troop",
@@ -695,6 +695,7 @@
           "Collapse": true,
           "Describe": true,
           "Group Includes": true,
+          "Label": "Deck",
           "Lock Qty": true,
           "Rename": true,
           "Type": "conceptual",
