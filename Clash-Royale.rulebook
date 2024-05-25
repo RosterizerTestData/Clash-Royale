@@ -15,6 +15,9 @@
           "Type": "game piece",
           "Unique": true
         },
+        "meta": {
+          "id": null
+        },
         "rules": {
           "The selected arena is too low for this building.": {
             "evals": [
